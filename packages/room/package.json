@@ -2,8 +2,8 @@
   "name": "@reskit/room",
   "version": "1.0.0",
   "description": "A kit of room location extraction",
-  "main": "dist/reskit-address.js",
-  "module": "dist/reskit-address.esm.mjs",
+  "main": "dist/reskit-room.js",
+  "module": "dist/reskit-room.esm.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -34,7 +34,7 @@
     "type": "git",
     "url": "git+https://github.com/simo-an/reskit.git"
   },
-  "homepage": "https://github.com/simo-an/reskit/packages/room",
+  "homepage": "https://github.com/simo-an/reskit/tree/main/packages/room",
   "bugs": {
     "url": "https://github.com/simo-an/reskit/issues"
   },

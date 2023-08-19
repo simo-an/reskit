@@ -5,7 +5,7 @@ type ICell =
     }
   | string;
 type IBuilding = {
-  name: string;
+  name?: string;
   floorMap: Record<TFloor, ICell[]>;
 };
 type TFloor = "1F" | "2F" | "3F" | "4F" | "5F" | "6F" | "7F" | "8F" | `${number}F` | string;
@@ -25,11 +25,14 @@ function useRoomCell(): IRoomInformation {
   const aliasMap = new Map<string, string>();
   const roomMap = new Map<string, string>();
 
-  function addRoom(cell: ICell, floor: TFloor, company: string) {
+  function addRoom(cell: ICell, floor: TFloor, building?: string) {
     const cellName = typeof cell !== "string" ? cell.name : cell;
 
     cells.push(cellName);
-    roomMap.set(cellName.toLowerCase(), `${company}${d}${floor}${d}${cellName}`);
+    roomMap.set(
+      cellName.toLowerCase(),
+      building ? `${building}${d}${floor}${d}${cellName}` : `${floor}${d}${cellName}`
+    );
 
     if (typeof cell === "string") {
       return;

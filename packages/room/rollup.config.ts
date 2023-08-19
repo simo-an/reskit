@@ -11,6 +11,7 @@ import pkg from "./package.json" assert { type: "json" };
 
 const command = 'git describe --always --tags --long --match "v*" --dirty';
 const GIT_VERSION = execSync(command).toString().trim();
+const BUILD_INFO = `${GIT_VERSION}(${new Date().toLocaleString()})`;
 
 const isDev = process.env.BUILD === "development";
 
@@ -19,16 +20,16 @@ const config = defineConfig({
   output: [
     {
       file: pkg.main,
-      name: "KitAddress",
+      name: "KitRoom",
       format: "umd",
-      sourcemap: true,
-      banner: `/** reskit-address-${GIT_VERSION} **/`,
+      sourcemap: false,
+      banner: `/** reskit-room-${BUILD_INFO} **/`,
     },
     {
       file: pkg.module,
       format: "esm",
-      sourcemap: true,
-      banner: `/** reskit-address-${GIT_VERSION} **/`,
+      sourcemap: false,
+      banner: `/** reskit-room-${BUILD_INFO} **/`,
     },
   ],
   external: [
@@ -41,7 +42,7 @@ const config = defineConfig({
       preventAssignment: true,
       // https://github.com/rollup/plugins/tree/master/packages/replace
       __VERSION__: pkg.version,
-      __BUILD_INFO__: `${GIT_VERSION}(${new Date().toLocaleString()})`,
+      __BUILD_INFO__: BUILD_INFO,
       __DEV__: String(isDev),
     }),
     resolve({
