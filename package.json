@@ -1,0 +1,57 @@
+{
+  "name": "reskit",
+  "version": "1.0.1",
+  "description": "A kit of information extraction",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx ./scripts/dev.ts",
+    "build": "pnpm -F=./packages/* run build",
+    "build-dev": "pnpm -F=./packages/* run build-dev",
+    "test": "pnpm -F=./packages/* run test",
+    "release": "tsx ./scripts/release.ts",
+    "format": "pnpm -F=./packages/* run format",
+    "precommit": "pnpm -F=./packages/* run precommit",
+    "preinstall": "only-allow pnpm"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pnpm run precommit"
+    }
+  },
+  "engines": {
+    "node": ">=18.14.2",
+    "pnpm": ">=8.0.0"
+  },
+  "keywords": [
+    "reskit",
+    "tools",
+    "room",
+    "extraction"
+  ],
+  "author": "simu",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@babel/parser": "^7.22.10",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^25.0.4",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.2.0",
+    "@rollup/plugin-replace": "^5.0.2",
+    "@rollup/plugin-terser": "^0.4.3",
+    "@rollup/plugin-typescript": "^11.1.2",
+    "@types/inquirer": "^9.0.3",
+    "@types/node": "^18.16.0",
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.19.2",
+    "husky": "^8.0.3",
+    "inquirer": "^9.2.10",
+    "lint-staged": "^14.0.0",
+    "only-allow": "^1.1.1",
+    "prettier": "^3.0.2",
+    "rollup": "^3.28.0",
+    "tslib": "^2.6.2",
+    "tsx": "^3.12.7",
+    "typescript": "^5.1.6",
+    "yaml": "^2.3.1"
+  }
+}
