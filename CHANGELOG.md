@@ -1,3 +1,10 @@
+## 1.0.1 (2023/08/19)
+
+### Features
+
+1. Support set building without name
+2. Support keep alias at extracted results
+
 ## 1.0.0 (2023/08/19)
 
 ### Features

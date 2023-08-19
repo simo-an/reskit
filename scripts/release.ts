@@ -72,7 +72,9 @@ async function buildProject() {
 }
 
 async function publishToNpm() {
-  projects.forEach((project) => execSync(`npm publish ${project}/dist`, { stdio: "inherit" }));
+  projects.forEach((project) =>
+    execSync(`npm publish ${project}/dist --access public`, { stdio: "inherit" })
+  );
 }
 
 async function bootstrap() {
