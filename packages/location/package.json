@@ -1,0 +1,44 @@
+{
+  "name": "@reskit/location",
+  "version": "1.0.1",
+  "description": "A kit of location extraction",
+  "main": "dist/reskit-location.js",
+  "module": "dist/reskit-location.esm.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "pnpm run build-bundle-dev -w",
+    "build": "tsx scripts/build.ts",
+    "build-dev": "tsx scripts/build.ts --dev",
+    "test": "tsx __test__/index.ts",
+    "format": "prettier --write --parser typescript src/**/*.ts index.ts",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "(src|__test__)/**/*.ts": [
+      "prettier --write"
+    ]
+  },
+  "author": "simu",
+  "keywords": [
+    "reskit",
+    "location",
+    "address",
+    "extraction"
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simo-an/reskit.git"
+  },
+  "homepage": "https://github.com/simo-an/reskit/tree/main/packages/location",
+  "bugs": {
+    "url": "https://github.com/simo-an/reskit/issues"
+  },
+  "dependencies": {
+    "@reskit/shared": "workspace:*"
+  },
+  "devDependencies": {}
+}

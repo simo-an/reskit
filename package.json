@@ -11,7 +11,8 @@
     "release": "tsx ./scripts/release.ts",
     "format": "pnpm -F=./packages/* run format",
     "precommit": "pnpm -F=./packages/* run precommit",
-    "preinstall": "only-allow pnpm"
+    "preinstall": "only-allow pnpm",
+    "quick": "pnpm -F=./projects/reskit-quick-svelte run dev"
   },
   "husky": {
     "hooks": {
