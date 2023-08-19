@@ -1,9 +1,9 @@
 {
-  "name": "@reskit/room",
+  "name": "@reskit/shared",
   "version": "1.1.0",
-  "description": "A kit of room location extraction",
-  "main": "dist/reskit-room.js",
-  "module": "dist/reskit-room.esm.mjs",
+  "description": "Internal kit of reskit",
+  "main": "dist/reskit-shared.js",
+  "module": "dist/reskit-shared.esm.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -24,9 +24,8 @@
   "author": "simu",
   "keywords": [
     "reskit",
-    "room",
-    "location",
-    "address",
+    "shared",
+    "extract",
     "extraction"
   ],
   "license": "Apache-2.0",
@@ -34,7 +33,7 @@
     "type": "git",
     "url": "git+https://github.com/simo-an/reskit.git"
   },
-  "homepage": "https://github.com/simo-an/reskit/tree/main/packages/room",
+  "homepage": "https://github.com/simo-an/reskit/tree/main/packages/shared",
   "bugs": {
     "url": "https://github.com/simo-an/reskit/issues"
   },

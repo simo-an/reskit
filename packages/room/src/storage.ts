@@ -21,14 +21,14 @@ interface IRoomInformation {
 }
 
 function useRoomCell(): IRoomInformation {
-  const cells: Array<string> = [];
+  const cells = new Set<string>();
   const aliasMap = new Map<string, string>();
   const roomMap = new Map<string, string>();
 
   function addRoom(cell: ICell, floor: TFloor, building?: string) {
     const cellName = typeof cell !== "string" ? cell.name : cell;
 
-    cells.push(cellName);
+    cells.add(cellName);
     roomMap.set(
       cellName.toLowerCase(),
       building ? `${building}${d}${floor}${d}${cellName}` : `${floor}${d}${cellName}`
@@ -40,12 +40,12 @@ function useRoomCell(): IRoomInformation {
 
     if (typeof cell.alias === "string") {
       aliasMap.set(cell.alias.toLowerCase(), cell.name);
-      return cells.push(cell.alias);
+      return cells.add(cell.alias);
     }
     if (Array.isArray(cell.alias)) {
       cell.alias.forEach((alias) => {
         aliasMap.set(alias.toLowerCase(), cell.name);
-        cells.push(alias);
+        cells.add(alias);
       });
     }
   }
@@ -57,7 +57,7 @@ function useRoomCell(): IRoomInformation {
   });
 
   return {
-    cells,
+    cells: Array.from(cells),
     aliasMap,
     roomMap,
   };
