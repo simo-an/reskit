@@ -47,8 +47,8 @@ function createRoomInformation() {
 /**
  * extract room location
  * @param text raw text
- * @return romms
- * Perf 22317 chars, no cache 2.4ms, chace 1.5ms
+ * @return rooms
+ * Perf 22317 chars, no cache 2.4ms, cache 1.5ms
  */
 function extractRoom(text: string, unique = true): Array<string> {
   createRoomInformation();

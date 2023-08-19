@@ -34,7 +34,7 @@
     "type": "git",
     "url": "git+https://github.com/simo-an/reskit.git"
   },
-  "homepage": "https://github.com/simo-an/reskit/packages/room",
+  "homepage": "https://github.com/simo-an/reskit/tree/main/packages/room",
   "bugs": {
     "url": "https://github.com/simo-an/reskit/issues"
   },

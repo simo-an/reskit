@@ -11,8 +11,8 @@ pnpm add @reskit/room
 We don't have built in datas.
 You should set buildings by `updateBuildings` at first.
 
-```typesctipt
-import { updateBuildings } from "../index";
+```typescript
+import { updateBuildings } from "@reskit/room";
 
 updateBuildings([
   {
@@ -32,8 +32,8 @@ updateBuildings([
 
 You can extract the meeting room location from a text by `extractRoom`
 
-```typesctipt
-import { extractRoom, updateBuildings } from "../index";
+```typescript
+import { extractRoom, updateBuildings } from "@reskit/room";
 
 updateBuildings([
   {
@@ -63,7 +63,7 @@ Create a company that have two buildings `Headquarters` and `Affiliate`.
 const building1 = {
   "2F": [
     { name: "Agora", alias: "shengwang" },
-    { name: "Colosseum", alias: ["theatre", "greate theatre"] },
+    { name: "Colosseum", alias: ["theatre", "great theatre"] },
     "Stonehenge",
   ],
   "3F": [{ name: "Suzhou", alias: "Gusu" }, "Hangzhou"],
@@ -81,7 +81,7 @@ const buildings = [
 Update building
 
 ```typescript
-import { updateBuildings } from "../index";
+import { updateBuildings } from "@reskit/room";
 
 updateBuildings(buildings);
 ```
@@ -89,7 +89,7 @@ updateBuildings(buildings);
 Extract room location from a text
 
 ```typescript
-import { extractRoom, updateBuildings } from "../index";
+import { extractRoom, updateBuildings } from "@reskit/room";
 
 console.warn(extractRoom("Let's have a meeting at Gusu tonight."));
 ```
@@ -103,7 +103,7 @@ The console will output
 Custom divider
 
 ```typescript
-import { extractRoom, updateBuildings, updateDivider } from "../index";
+import { extractRoom, updateBuildings, updateDivider } from "@reskit/room";
 
 updateDivider("-");
 
@@ -119,7 +119,7 @@ The console will output
 Output all the same meeting-room
 
 ```typescript
-import { extractRoom, updateBuildings, updateDivider } from "../index";
+import { extractRoom, updateBuildings, updateDivider } from "@reskit/room";
 
 console.warn(extractRoom("Let's have a meeting at Chizhou! (Chizhou not Hangzhou!).", false));
 ```
@@ -136,4 +136,4 @@ The console will output
 
 ## Others
 
-Welcome to create PR and make rekKit better!
+Welcome to create PR and make reskit better!

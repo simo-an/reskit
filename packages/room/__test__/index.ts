@@ -15,7 +15,7 @@ console.warn(extractRoom("Let's have a meeting at Martis tomorrow"));
 const building1 = {
   "2F": [
     { name: "Agora", alias: "shengwang" },
-    { name: "Colosseum", alias: ["theatre", "greate theatre"] },
+    { name: "Colosseum", alias: ["theatre", "great theatre"] },
     "Stonehenge",
   ],
   "3F": [{ name: "Suzhou", alias: "Gusu" }, "Hangzhou"],
