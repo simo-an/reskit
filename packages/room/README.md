@@ -8,7 +8,7 @@ pnpm add @reskit/room
 
 ## Run Test Demo
 
-We don't have built in datas.
+We don't have built in data.
 You should set buildings by `updateBuildings` at first.
 
 ```typescript
@@ -60,6 +60,8 @@ The output will be
 Create a company that have two buildings `Headquarters` and `Affiliate`.
 
 ```typescript
+import type { IBuilding } from "@reskit/room";
+
 const building1 = {
   "2F": [
     { name: "Agora", alias: "shengwang" },
@@ -72,9 +74,15 @@ const building2 = {
   "1F": [{ name: "MountHuang", alias: "Mount-Huang" }, { name: "Chizhou" }, "Great Wall", "Google"],
 };
 
-const buildings = [
+const building3 = {
+  East: [{ name: "Himalayas", alias: "Highest-Mountain" }],
+};
+
+const buildings: IBuilding[] = [
   { name: "Headquarters", floorMap: building1 },
   { name: "Affiliate", floorMap: building2 },
+  // Building without name
+  { floorMap: building3 },
 ];
 ```
 
@@ -86,24 +94,28 @@ import { updateBuildings } from "@reskit/room";
 updateBuildings(buildings);
 ```
 
-Extract room location from a text
+Extract room location from text
 
 ```typescript
 import { extractRoom, updateBuildings } from "@reskit/room";
 
 console.warn(extractRoom("Let's have a meeting at Gusu tonight."));
+console.warn(extractRoom("Let's have a meeting at Highest-Mountain tonight."));
 ```
 
 The console will output
 
 ```text
 ["Headquarters/3F/Suzhou"]
+[ 'East/Himalayas' ]
 ```
 
-Custom divider
+## Functions
+
+### Custom divider
 
 ```typescript
-import { extractRoom, updateBuildings, updateDivider } from "@reskit/room";
+import { extractRoom, updateDivider } from "@reskit/room";
 
 updateDivider("-");
 
@@ -116,12 +128,12 @@ The console will output
 ["Headquarters-3F-Suzhou"]
 ```
 
-Output all the same meeting-room
+### Output the same room
 
 ```typescript
-import { extractRoom, updateBuildings, updateDivider } from "@reskit/room";
+import { extractRoom, updateDivider } from "@reskit/room";
 
-console.warn(extractRoom("Let's have a meeting at Chizhou! (Chizhou not Hangzhou!).", false));
+console.warn(extractRoom("Let's have a meeting at Chizhou! (Chizhou not Gusu!).", false));
 ```
 
 The console will output
@@ -130,10 +142,24 @@ The console will output
 [
   "Affiliate-1F-Chizhou",
   "Affiliate-1F-Chizhou",
-  "Headquarters-3F-Hangzhou"
+  "Headquarters-3F-Suzhou"
 ]
+```
+
+### Using alias as the result
+
+```typescript
+import { extractRoom } from "@reskit/room";
+
+console.warn(extractRoom("Let's have a meeting at Gusu tonight.", true, true));
+```
+
+The console will output
+
+```text
+[ 'Headquarters-3F-Gusu' ]
 ```
 
 ## Others
 
-Welcome to create PR and make reskit better!
+Welcome to create PR and make reskit/room better!

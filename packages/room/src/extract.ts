@@ -15,10 +15,14 @@ function getCellViaAlias(alias: string) {
   return cache.aliasMap && cache.aliasMap.get(alias.toLowerCase());
 }
 
-function getRoom(alias: string) {
-  const cell = isRoomAlias(alias) ? getCellViaAlias(alias) : alias;
+function getRoom(alias: string, keepAlias: boolean) {
+  const isAlias = isRoomAlias(alias);
+  const cell = isAlias ? getCellViaAlias(alias) : alias;
+  const room = cell && cache.roomMap && cache.roomMap.get(cell.toLowerCase());
 
-  return cell && cache.roomMap && cache.roomMap.get(cell.toLowerCase());
+  if (room) {
+    return keepAlias && isAlias ? room.replace(new RegExp(`${cell}$`), alias) : room;
+  }
 }
 
 function createExtractRegexp() {
@@ -47,10 +51,13 @@ function createRoomInformation() {
 /**
  * extract room location
  * @param text raw text
+ * @param unique whether to deduplicate
+ * @param keepAlias whether to use alias
+ *
  * @return rooms
  * Perf 22317 chars, no cache 2.4ms, cache 1.5ms
  */
-function extractRoom(text: string, unique = true): Array<string> {
+function extractRoom(text: string, unique = true, keepAlias = false): Array<string> {
   createRoomInformation();
   if (!extractRegexp) {
     createExtractRegexp();
@@ -60,7 +67,7 @@ function extractRoom(text: string, unique = true): Array<string> {
   const matchResult = text.match(extractRegexp!) || [];
 
   matchResult.forEach((result) => {
-    const room = getRoom(result);
+    const room = getRoom(result, keepAlias);
     room && rooms.push(room);
   });
 
