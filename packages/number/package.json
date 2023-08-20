@@ -1,9 +1,9 @@
 {
-  "name": "@reskit/location",
-  "version": "1.1.0",
-  "description": "A kit of location extraction",
-  "main": "dist/reskit-location.js",
-  "module": "dist/reskit-location.esm.mjs",
+  "name": "@reskit/number",
+  "version": "1.0.1",
+  "description": "A kit of number extraction",
+  "main": "dist/reskit-number.js",
+  "module": "dist/reskit-number.esm.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -17,25 +17,24 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "(src|__test__)/**/*.ts": [
+    "(src|test)/**/*.ts": [
       "prettier --write"
     ]
   },
   "author": "simu",
   "keywords": [
     "reskit",
-    "location",
-    "address",
-    "extract",
+    "number",
     "extraction",
-    "location extract"
+    "extract",
+    "number extract"
   ],
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/simo-an/reskit.git"
   },
-  "homepage": "https://github.com/simo-an/reskit/tree/main/packages/location",
+  "homepage": "https://github.com/simo-an/reskit/tree/main/packages/number",
   "bugs": {
     "url": "https://github.com/simo-an/reskit/issues"
   },

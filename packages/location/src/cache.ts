@@ -1,9 +1,9 @@
-interface IRoomCache {
+interface ILocationCache {
   cells: string[];
   aliasMap: Map<string, string> | null;
   locationMap: Map<string, string> | null;
 }
-let cache: IRoomCache = {
+let cache: ILocationCache = {
   cells: [],
   aliasMap: null,
   locationMap: null,

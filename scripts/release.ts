@@ -51,7 +51,7 @@ async function pushToRepository(version: string) {
   ]);
 
   if (push) {
-    execSync(`git commit -m "chore: update version to ${version}"`);
+    execSync(`git commit -m "chore: upgrade version to ${version}"`);
     execSync(`git tag v${version}`);
     execSync("git push origin");
   }
