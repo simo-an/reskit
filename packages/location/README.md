@@ -9,7 +9,7 @@ pnpm add @reskit/location
 ## Run A Demo
 
 We don't have built in data.
-You should set buildings by `updateLocations` at first.
+You should set locations by `updateLocations` at first.
 
 ```typescript
 import { updateLocations, extractLocation } from "@reskit/location";
@@ -34,7 +34,7 @@ updateLocations([
 ```
 
 ```typescript
-import { extractRoom, updateBuildings } from "@reskit/room";
+import { extractLocation, updateBuildings } from "@reskit/location";
 
 console.warn(extractLocation("Let's have a meeting at Gusu tomorrow"));
 console.warn(extractLocation("Let's have a meeting at Martis tomorrow"));
@@ -91,7 +91,7 @@ const buildings = [
 Update locations
 
 ```typescript
-import { updateLocations } from "@reskit/room";
+import { updateLocations } from "@reskit/location";
 
 updateLocations(buildings);
 ```
@@ -99,7 +99,7 @@ updateLocations(buildings);
 Extract location from text
 
 ```typescript
-import { extractLocation, updateLocations } from "@reskit/room";
+import { extractLocation, updateLocations } from "@reskit/location";
 
 console.warn(extractLocation("Let's have a meeting at the great theatre tonight."));
 ```
@@ -110,10 +110,12 @@ The console will output
 ["Headquarters/2F/East/Colosseum"]
 ```
 
+## Functions
+
 Custom divider
 
 ```typescript
-import { extractLocation, updateLocations, updateDivider } from "@reskit/room";
+import { extractLocation, updateLocations, updateDivider } from "@reskit/location";
 
 updateDivider("-");
 
@@ -126,10 +128,10 @@ The console will output
 ["Headquarters-3F-Suzhou"]
 ```
 
-Output all the same meeting-room
+Output all the same locations
 
 ```typescript
-import { extractLocation, updateLocations, updateDivider } from "@reskit/room";
+import { extractLocation, updateLocations, updateDivider } from "@reskit/location";
 
 console.warn(extractLocation("Let's have a meeting at Chizhou! (Chizhou not Hangzhou!).", false));
 ```

@@ -26,7 +26,9 @@
     "reskit",
     "location",
     "address",
-    "extraction"
+    "extract",
+    "extraction",
+    "location extract"
   ],
   "license": "Apache-2.0",
   "repository": {
