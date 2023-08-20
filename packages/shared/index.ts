@@ -1,2 +1,2 @@
-export * from "./src/tree/dfs";
-export * from "./src/tree/getPath";
+export * from "./src/algorithm";
+export * from "./src/normal";
