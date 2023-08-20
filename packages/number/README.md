@@ -13,7 +13,7 @@ Before use `@reskit/number` to extract number, you should set localized data.
 > At version 1.2.0 , we only support chinese
 
 ```typescript
-import { extractNumber, updateLocalized, replaceNumber } from "../index";
+import { extractNumber, updateLocalized, replaceNumber } from "@reskit/number";
 import { zhLocalize, zhAlgorithm, createZhRegexp } from "@reskit/number";
 
 updateLocalized(
