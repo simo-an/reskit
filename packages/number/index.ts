@@ -29,10 +29,13 @@ function extractNumber(text: string, convert: boolean = true): Array<number | st
     return numResult;
   }
 
-  const existTextList = textResult.split(createOrRegexp(numResult));
-  const convertTextList = text.split(createOrRegexp(existTextList));
+  const numRegexp = createOrRegexp(numResult.sort((a, b) => String(b).length - String(a).length));
+  const existTextList = textResult
+    .split(numRegexp)
+    .filter((item) => !!item)
+    .sort((a, b) => b.length - a.length);
 
-  return convertTextList.filter((text) => !!text);
+  return text.split(createOrRegexp(existTextList)).filter((text) => !!text);
 }
 
 export { extractNumber, replaceNumber };

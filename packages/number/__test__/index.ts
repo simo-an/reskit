@@ -32,13 +32,19 @@ function judge(exit?: boolean) {
   }
   exit && process.exit(0);
 }
+
+result = extractNumber("6月28日，1006个人在1间163平的房间开会", false);
+answer = ["6", "28", "1006", "1", "163"];
+
+judge(true);
+
 result = extractNumber(
   "我想订明天中午十二点的餐馆，三个人，走路1千多米能到，十七点五万元以内，预留手机号为18619994211，明天二十三摄氏度",
   false
 );
 answer = ["十二", "三", "1千", "十七点五万", "18619994211", "二十三"];
 
-judge();
+judge(true);
 
 result = extractNumber(
   "我想订明天中午十二点的餐馆，三个人，走路1千多米能到，十七点五万元以内，预留手机号为18619994211，明天二十三摄氏度"
