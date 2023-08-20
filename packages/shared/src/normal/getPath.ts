@@ -1,7 +1,7 @@
-import { dfs, isLeaf } from "./dfs";
-import type { TNode } from "./dfs";
+import { dfs, isLeaf } from "../algorithm";
+import type { TNode } from "../algorithm";
 
-function getPaths<N extends TNode>(n: N, onNode?: (n: N) => void): Array<N[]> {
+function getPaths<N extends TNode>(n: N): Array<N[]> {
   let nodes: N[] = [];
   let paths: Array<N[]> = [];
 

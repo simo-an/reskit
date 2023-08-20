@@ -1,6 +1,6 @@
 {
   "name": "@reskit/location",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A kit of location extraction",
   "main": "dist/reskit-location.js",
   "module": "dist/reskit-location.esm.mjs",
@@ -26,7 +26,9 @@
     "reskit",
     "location",
     "address",
-    "extraction"
+    "extract",
+    "extraction",
+    "location extract"
   ],
   "license": "Apache-2.0",
   "repository": {

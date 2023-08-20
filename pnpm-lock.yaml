@@ -75,9 +75,13 @@ importers:
         specifier: ^2.3.1
         version: 2.3.1
 
-  packages/date: {}
-
   packages/location:
+    dependencies:
+      '@reskit/shared':
+        specifier: workspace:*
+        version: link:../shared
+
+  packages/number:
     dependencies:
       '@reskit/shared':
         specifier: workspace:*

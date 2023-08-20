@@ -1,9 +1,9 @@
 {
-  "name": "@reskit/shared",
-  "version": "1.2.0",
-  "description": "Internal kit of reskit",
-  "main": "dist/reskit-shared.js",
-  "module": "dist/reskit-shared.esm.mjs",
+  "name": "@reskit/number",
+  "version": "1.0.1",
+  "description": "A kit of number extraction",
+  "main": "dist/reskit-number.js",
+  "module": "dist/reskit-number.esm.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -17,26 +17,29 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "(src|__test__)/**/*.ts": [
+    "(src|test)/**/*.ts": [
       "prettier --write"
     ]
   },
   "author": "simu",
   "keywords": [
     "reskit",
-    "shared",
+    "number",
+    "extraction",
     "extract",
-    "extraction"
+    "number extract"
   ],
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/simo-an/reskit.git"
   },
-  "homepage": "https://github.com/simo-an/reskit/tree/main/packages/shared",
+  "homepage": "https://github.com/simo-an/reskit/tree/main/packages/number",
   "bugs": {
     "url": "https://github.com/simo-an/reskit/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@reskit/shared": "workspace:*"
+  },
   "devDependencies": {}
 }
