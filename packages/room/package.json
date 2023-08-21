@@ -1,6 +1,6 @@
 {
   "name": "@reskit/room",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A kit of room location extraction",
   "main": "dist/reskit-room.js",
   "module": "dist/reskit-room.esm.mjs",

@@ -1,6 +1,6 @@
 {
   "name": "@reskit/number",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A kit of number extraction",
   "main": "dist/reskit-number.js",
   "module": "dist/reskit-number.esm.mjs",
