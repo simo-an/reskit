@@ -1,7 +1,12 @@
 type RepeatMode = "?" | "+" | "*";
 
+function filterReserved(text: string | number) {
+  return text.toString().replace(/[-[\]{}()*+!<=:?.\/\\^$|#\s,]/g, "\\$&");
+}
+
 function createRegexp(text: string, flag?: string, format?: Record<string, string>) {
   if (!format) {
+    console.warn(text);
     return new RegExp(text, flag);
   }
 
@@ -20,7 +25,9 @@ function createOrRegexp(
   flag?: string,
   format?: Record<string, string>
 ): RegExp {
-  let regexpText = textList.join("|");
+  console.warn(textList);
+
+  let regexpText = textList.map(filterReserved).join("|");
 
   if (repeat) {
     regexpText = `(${regexpText})${repeat}`;
@@ -34,7 +41,7 @@ function createExistRegexp(
   repeat?: RepeatMode,
   flag?: string
 ): RegExp {
-  let regexpText = `${textList.join("?")}?`;
+  let regexpText = `${textList.map(filterReserved).join("?")}?`;
 
   if (repeat) {
     regexpText = `(${regexpText})${repeat}`;

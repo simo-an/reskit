@@ -96,6 +96,9 @@ importers:
       '@reskit/location':
         specifier: workspace:*
         version: link:../../packages/location
+      '@reskit/number':
+        specifier: workspace:*
+        version: link:../../packages/number
       '@reskit/room':
         specifier: workspace:*
         version: link:../../packages/room
