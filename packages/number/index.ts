@@ -25,7 +25,7 @@ function extractNumber(text: string, convert: boolean = true): Array<number | st
   const textResult = replaceNumber(text);
   const numResult = useNumberRegexp(textResult);
 
-  if (convert) {
+  if (convert || numResult.length === 0) {
     return numResult;
   }
 
