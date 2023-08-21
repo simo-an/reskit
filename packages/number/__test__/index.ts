@@ -1,8 +1,9 @@
 import {
   extractNumber,
   updateLocalized,
-  replaceLocalInt,
+  toFullNumber,
   replaceLocalDecimal,
+  replaceLocalFraction,
   replaceMixed,
   replaceNumber,
 } from "../index";
@@ -33,10 +34,34 @@ function judge(exit?: boolean) {
   exit && process.exit(0);
 }
 
+result = replaceNumber("走路1千多米能到");
+answer = "走路1000多米能到";
+judge();
+
+result = replaceNumber("这有1.2千米");
+answer = "这有1200米";
+
+judge();
+
+result = replaceNumber("这道题的答案是四十分之3百");
+answer = "这道题的答案是7.5";
+
+judge();
+
+result = extractNumber("这里有四十分之三的人在说活");
+answer = [0.075];
+
+judge();
+
+result = replaceLocalFraction("这里有四分之三的人在说活");
+answer = ["这里有0.75的人在说活"];
+
+judge();
+
 result = extractNumber("6月28日，1006个人在1间163平的房间开会", false);
 answer = ["6", "28", "1006", "1", "163"];
 
-judge(true);
+judge();
 
 result = extractNumber(
   "我想订明天中午十二点的餐馆，三个人，走路1千多米能到，十七点五万元以内，预留手机号为18619994211，明天二十三摄氏度",
@@ -44,7 +69,7 @@ result = extractNumber(
 );
 answer = ["十二", "三", "1千", "十七点五万", "18619994211", "二十三"];
 
-judge(true);
+judge();
 
 result = extractNumber(
   "我想订明天中午十二点的餐馆，三个人，走路1千多米能到，十七点五万元以内，预留手机号为18619994211，明天二十三摄氏度"
@@ -93,10 +118,6 @@ result = zhAlgorithm.toNumber("两万三千四百二十三");
 answer = 23423;
 judge();
 
-result = replaceNumber("走路1千多米能到");
-answer = "走路1000多米能到";
-judge();
-
 result = replaceMixed("今年是2千零2十年");
 answer = "今年是二千零二十年";
 
@@ -112,7 +133,7 @@ answer = "答案是13.14";
 
 judge();
 
-result = replaceLocalInt("今天是二零二二年的第一天");
+result = toFullNumber("今天是二零二二年的第一天");
 answer = "今天是2022年的第1天";
 
 judge();

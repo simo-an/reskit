@@ -6,7 +6,6 @@ function filterReserved(text: string | number) {
 
 function createRegexp(text: string, flag?: string, format?: Record<string, string>) {
   if (!format) {
-    console.warn(text);
     return new RegExp(text, flag);
   }
 
@@ -25,8 +24,6 @@ function createOrRegexp(
   flag?: string,
   format?: Record<string, string>
 ): RegExp {
-  console.warn(textList);
-
   let regexpText = textList.map(filterReserved).join("|");
 
   if (repeat) {
@@ -66,7 +63,7 @@ function useTaggedRegexp<T extends string>(
 }
 
 function useNumberRegexp(text: string): Array<number> {
-  const result = text.match(/\d+/g) || [];
+  const result = text.match(/\d+(\.\d+)?/g) || [];
 
   return result.map((result) => parseFloat(result));
 }

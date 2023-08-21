@@ -39,6 +39,7 @@ const unitMap: Record<string, number> = {
 const unitList = Object.keys(unitMap);
 
 const flag = "点";
+const fractionFlag = "分之";
 
 const zhLocalize = {
   localNumber: toNumMap,
@@ -50,23 +51,38 @@ const zhLocalize = {
 let localRegexp: RegExp;
 let unitRegexp: RegExp;
 let numberRegexp: RegExp;
+let localNumberRegexp: RegExp;
+let mixedNumberRegexp: RegExp;
 let localDecimalRegexp: RegExp;
+let localFractionRegexp: RegExp;
 let mixedRegexp: RegExp;
 
 function createZhRegexp() {
   if (!localRegexp) {
     const localNumberList = Object.keys(toNumMap);
+    const numberList = Object.keys(toLocalMap);
     const unitList = Object.keys(unitMap);
+
     const numberLikeList = [...localNumberList, ...unitList];
 
     localRegexp = createOrRegexp(localNumberList, "+");
     unitRegexp = createOrRegexp(unitList);
-    numberRegexp = createOrRegexp(numberLikeList, "+");
+    numberRegexp = createOrRegexp(numberList, "+");
+    localNumberRegexp = createOrRegexp(numberLikeList, "+");
+    mixedNumberRegexp = createOrRegexp([...numberLikeList, ...numberList], "+");
+
     localDecimalRegexp = createRegexp(`{int}${flag}{decimal}{unit}`, "g", {
       int: `(${numberLikeList.join("|")})+`,
       decimal: `(${localNumberList.join("|")})+`,
       unit: `(${unitList.join("|")})?`,
     });
+
+    localFractionRegexp = createRegexp(`{denominator}${fractionFlag}{numerator}`, "g", {
+      // whether to mix local as  arabic number
+      denominator: `(${numberLikeList.join("|")})+`,
+      numerator: `(${numberLikeList.join("|")})+`,
+    });
+
     mixedRegexp = createRegexp("{front}{unit}{back}", "g", {
       front: "(\\d+(.\\d+)?)",
       unit: `(${unitList.join("|")})`,
@@ -78,7 +94,10 @@ function createZhRegexp() {
     localRegexp,
     unitRegexp,
     numberRegexp,
+    mixedNumberRegexp,
+    localNumberRegexp,
     localDecimalRegexp,
+    localFractionRegexp,
     mixedRegexp,
   };
 }
@@ -158,6 +177,15 @@ function convertDecimalNumber(text: string) {
   return parseFloat(`${int}.${decimal}`);
 }
 
+function convertFractionNumber(text: string): number {
+  const [denominatorText, numeratorText] = text.split(fractionFlag);
+
+  let denominator = toNumber(denominatorText.trim());
+  let numerator = toNumber(numeratorText.trim());
+
+  return numerator / denominator;
+}
+
 function hasUnit(text: string) {
   let withUnit = unitRegexp.test(text);
 
@@ -189,6 +217,9 @@ function toNumber(text: string): number {
   if (text.includes(flag)) {
     return convertDecimalNumber(text);
   }
+  if (text.includes(fractionFlag)) {
+    return convertFractionNumber(text);
+  }
 
   if (hasUnit(text)) {
     return convertUnitNumber(text);
@@ -197,7 +228,38 @@ function toNumber(text: string): number {
   return convertNumber(text);
 }
 
-function toLocalized(num: number): string {
+function convertMixedNumber(text: string): string {
+  if (!isNaN(Number(text))) {
+    return text;
+  }
+
+  let result = text.split("");
+
+  for (let i = 0; i < result.length; i++) {
+    const n = Number(result[i]);
+
+    if (Number.isInteger(n)) {
+      result[i] = toLocalMap[n];
+    }
+
+    if (
+      result[i] === "." &&
+      i !== 0 &&
+      1 !== result.length - 1 &&
+      mixedNumberRegexp.test(result[i - 1] + result[i + 1])
+    ) {
+      result[i] = flag;
+    }
+  }
+
+  return result.join("");
+}
+
+function toLocalized(num: number | string): string {
+  if (typeof num === "string") {
+    return convertMixedNumber(num);
+  }
+
   let result = "";
   let index = 0;
 

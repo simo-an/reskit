@@ -27,7 +27,7 @@
 
   <div class="extract-text">Text: {text}</div>
   <div class="times">Time: {times}ms</div>
-  <div class="extract-result">Number: {result.length ? result : "..."}</div>
+  <div class="extract-result">Number({result.length}): {result.length ? result : "..."}</div>
   <div class="extract-result">rawResult: {rawResult.length ? rawResult : "..."}</div>
   <div class="extract-result">replacedResult: {replacedResult.length ? replacedResult : "..."}</div>
 </div>
