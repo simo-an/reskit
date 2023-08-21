@@ -34,12 +34,45 @@ function judge(exit?: boolean) {
   exit && process.exit(0);
 }
 
+result = extractNumber(
+  "我想明天中午十二点和三个人走1千多米，花费十七点五万元以内，有百分之四十的概率温度在二十三摄氏度"
+);
+answer = [12, 3, 1000, 175000, 0.4, 23];
+
+console.warn(result.toString(), answer.toString());
+
+judge(true);
+
+result = extractNumber("答案是负的一又十分之四");
+answer = [-1.4];
+judge();
+
+result = extractNumber("答案是负十分之三");
+answer = [-0.3];
+judge();
+
+result = extractNumber("今年是二〇二二年");
+answer = [2022];
+judge();
+
+result = extractNumber("我有一百万");
+answer = [1000000];
+judge();
+
+result = replaceNumber("这次考试有百分之五十的人及格了");
+answer = "这次考试有0.5的人及格了";
+judge();
+
+result = replaceNumber("答案是一又四分之一");
+answer = "答案是1.25";
+judge();
+
 result = replaceNumber("走路1千多米能到");
 answer = "走路1000多米能到";
 judge();
 
-result = replaceNumber("这有1.2千米");
-answer = "这有1200米";
+result = replaceNumber("整个路程有1.2千米");
+answer = "整个路程有1200米";
 
 judge();
 
@@ -68,13 +101,6 @@ result = extractNumber(
   false
 );
 answer = ["十二", "三", "1千", "十七点五万", "18619994211", "二十三"];
-
-judge();
-
-result = extractNumber(
-  "我想订明天中午十二点的餐馆，三个人，走路1千多米能到，十七点五万元以内，预留手机号为18619994211，明天二十三摄氏度"
-);
-answer = [12, 3, 1000, 175000, 18619994211, 23];
 
 judge();
 

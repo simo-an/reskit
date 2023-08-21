@@ -63,7 +63,7 @@ function useTaggedRegexp<T extends string>(
 }
 
 function useNumberRegexp(text: string): Array<number> {
-  const result = text.match(/\d+(\.\d+)?/g) || [];
+  const result = text.match(/-?\d+(\.\d+)?/g) || [];
 
   return result.map((result) => parseFloat(result));
 }

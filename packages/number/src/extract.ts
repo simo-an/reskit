@@ -6,6 +6,7 @@ interface ILocalizedRegexp {
   localNumberRegexp: RegExp;
   localDecimalRegexp: RegExp;
   localFractionRegexp: RegExp;
+  localNegativeRegexp: RegExp;
   mixedRegexp: RegExp;
 }
 
@@ -47,6 +48,18 @@ function replaceLocalDecimal(text: string) {
 
   decimalList.forEach((decimal) => {
     result = result.replace(decimal, algorithm.toNumber(decimal).toString());
+  });
+
+  return result;
+}
+
+function replaceLocalNegative(text: string) {
+  const negativeList = text.match(regexp.localNegativeRegexp) || [];
+
+  let result = text;
+
+  negativeList.forEach((negative) => {
+    result = result.replace(negative, algorithm.toNumber(negative).toString());
   });
 
   return result;
@@ -97,6 +110,7 @@ function toFullLocalized(text: string): string {
 
   result = algorithm.toLocalized(text);
 
+  result = replaceLocalNegative(result);
   result = replaceLocalDecimal(result);
   result = replaceLocalFraction(result);
 

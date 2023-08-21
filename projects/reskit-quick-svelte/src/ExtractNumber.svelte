@@ -9,6 +9,7 @@
   let rawResult: Array<number | string> = [];
   let replacedResult = "";
   let times = 0;
+  let hideRawText = false;
 
   function extractNumberFromText() {
     let start = Date.now();
@@ -19,13 +20,15 @@
   }
 </script>
 
-<div id="number-extract">
+<div id="number-extract" on:dblclick={() => (hideRawText = !hideRawText)} role="presentation">
   <input type="text" bind:value={text} />
   <div class="button">
     <button on:click={extractNumberFromText}>Extract</button>
   </div>
 
-  <div class="extract-text">Text: {text}</div>
+  {#if !hideRawText}
+    <div class="extract-text">Text: {text}</div>
+  {/if}
   <div class="times">Time: {times}ms</div>
   <div class="extract-result">Number({result.length}): {result.length ? result : "..."}</div>
   <div class="extract-result">rawResult: {rawResult.length ? rawResult : "..."}</div>
