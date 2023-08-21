@@ -2,7 +2,11 @@ interface ILocalizedRegexp {
   localRegexp: RegExp;
   unitRegexp: RegExp;
   numberRegexp: RegExp;
+  mixedNumberRegexp: RegExp;
+  localNumberRegexp: RegExp;
   localDecimalRegexp: RegExp;
+  localFractionRegexp: RegExp;
+  localNegativeRegexp: RegExp;
   mixedRegexp: RegExp;
 }
 
@@ -16,7 +20,7 @@ interface ILocalizedData {
 
 interface ILocalizedAlgorithm {
   toNumber: (text: string) => number;
-  toLocalized: (num: number) => string;
+  toLocalized: (num: number | string) => string;
 }
 
 let data: ILocalizedData;
@@ -37,27 +41,36 @@ function updateLocalized(_data?: ILocalizedData, _algorithm?: ILocalizedAlgorith
   _algorithm && updateLocalizedAlgorithm(_algorithm);
 }
 
-function replaceLocalInt(text: string) {
-  const intList = text.match(regexp.numberRegexp) || [];
-  const unitList = Object.keys(data.unit);
+function replaceLocalDecimal(text: string) {
+  const decimalList = text.match(regexp.localDecimalRegexp) || [];
 
   let result = text;
 
-  intList.forEach((int) => {
-    if (!unitList.includes(int)) {
-      result = result.replace(int, algorithm.toNumber(int).toString());
-    }
+  decimalList.forEach((decimal) => {
+    result = result.replace(decimal, algorithm.toNumber(decimal).toString());
   });
 
   return result;
 }
 
-function replaceLocalDecimal(text: string) {
-  const decimalList = text.match(regexp.localDecimalRegexp) || [];
+function replaceLocalNegative(text: string) {
+  const negativeList = text.match(regexp.localNegativeRegexp) || [];
+
   let result = text;
 
-  decimalList.forEach((decimal) => {
-    result = result.replace(decimal, algorithm.toNumber(decimal).toString());
+  negativeList.forEach((negative) => {
+    result = result.replace(negative, algorithm.toNumber(negative).toString());
+  });
+
+  return result;
+}
+
+function replaceLocalFraction(text: string) {
+  const fractionList = text.match(regexp.localFractionRegexp) || [];
+  let result = text;
+
+  fractionList.forEach((fraction) => {
+    result = result.replace(fraction, algorithm.toNumber(fraction).toString());
   });
 
   return result;
@@ -77,10 +90,39 @@ function replaceMixed(text: string) {
   return result;
 }
 
+function toFullNumber(text: string) {
+  const intList = text.match(regexp.localNumberRegexp) || [];
+  const unitList = Object.keys(data.unit);
+
+  let result = text;
+
+  intList.forEach((int) => {
+    if (!unitList.includes(int)) {
+      result = result.replace(int, algorithm.toNumber(int).toString());
+    }
+  });
+
+  return result;
+}
+
+function toFullLocalized(text: string): string {
+  let result = text;
+
+  result = algorithm.toLocalized(text);
+
+  result = replaceLocalNegative(result);
+  result = replaceLocalDecimal(result);
+  result = replaceLocalFraction(result);
+
+  return result;
+}
+
 export {
-  replaceLocalInt,
+  toFullNumber,
   replaceLocalDecimal,
+  replaceLocalFraction,
   replaceMixed,
+  toFullLocalized,
   updateLocalized,
   updateLocalizedData,
   updateLocalizedAlgorithm,
