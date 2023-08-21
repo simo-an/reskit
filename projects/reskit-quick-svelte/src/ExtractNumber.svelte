@@ -4,7 +4,7 @@
 
   updateLocalized({ ...zhLocalize, regexp: createZhRegexp() }, zhAlgorithm);
 
-  let text = "return text.replace(/[-[]{}()*+!<=:?./\\^$|#s,]/g";
+  let text = "6月28日，1006个人在1间163平的房间开会";
   let result: number[] = [];
   let rawResult: Array<number | string> = [];
   let replacedResult = "";

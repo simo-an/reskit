@@ -1,3 +1,9 @@
+## 1.2.0 (2023/08/21)
+
+### Fixes
+
+1. **extract-number**: Fix special text caused error extract result
+
 ## 1.2.0 (2023/08/20)
 
 ### Features
