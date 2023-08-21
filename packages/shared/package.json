@@ -1,6 +1,6 @@
 {
   "name": "@reskit/shared",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Internal kit of reskit",
   "main": "dist/reskit-shared.js",
   "module": "dist/reskit-shared.esm.mjs",

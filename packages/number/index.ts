@@ -1,4 +1,4 @@
-import { replaceLocalDecimal, replaceLocalInt, replaceMixed } from "./src/extract";
+import { toFullNumber, toFullLocalized } from "./src/extract";
 import { createOrRegexp, useNumberRegexp } from "@reskit/shared";
 
 /**
@@ -8,9 +8,8 @@ import { createOrRegexp, useNumberRegexp } from "@reskit/shared";
 function replaceNumber(text: string): string {
   let result = text;
 
-  result = replaceLocalDecimal(result);
-  result = replaceMixed(result);
-  result = replaceLocalInt(result);
+  result = toFullLocalized(result);
+  result = toFullNumber(result);
 
   return result;
 }

@@ -1,4 +1,10 @@
-## 1.2.0 (2023/08/21)
+## 1.2.2 (2023/08/21)
+
+### Features
+
+1. **extract-number**: Feat support extract fraction and negative number
+
+## 1.2.1 (2023/08/21)
 
 ### Fixes
 
@@ -20,8 +26,8 @@
 
 ### Features
 
-1. **extract-room**: Support set building without name
-2. **extract-room**: Support keep alias at extracted results
+1. **extract-room**: Feat support set building without name
+2. **extract-room**: Feat support keep alias at extracted results
 
 ## 1.0.0 (2023/08/19)
 
