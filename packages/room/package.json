@@ -1,7 +1,7 @@
 {
   "name": "@reskit/room",
-  "version": "1.2.2",
-  "description": "A kit of room location extraction",
+  "version": "1.2.3",
+  "description": "A kit to extract room location",
   "main": "dist/reskit-room.js",
   "module": "dist/reskit-room.esm.mjs",
   "types": "dist/index.d.ts",
@@ -23,7 +23,8 @@
   },
   "author": "simu",
   "keywords": [
-    "reskit",
+    "extract room",
+    "extract location",
     "room",
     "location",
     "address",

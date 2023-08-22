@@ -1,7 +1,7 @@
 {
   "name": "@reskit/number",
-  "version": "1.2.2",
-  "description": "A kit of number extraction",
+  "version": "1.2.3",
+  "description": "A kit to extract number",
   "main": "dist/reskit-number.js",
   "module": "dist/reskit-number.esm.mjs",
   "types": "dist/index.d.ts",
@@ -23,10 +23,11 @@
   },
   "author": "simu",
   "keywords": [
+    "extract number",
     "reskit",
     "number",
-    "extraction",
     "extract",
+    "extraction",
     "number extract"
   ],
   "license": "Apache-2.0",

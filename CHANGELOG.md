@@ -1,3 +1,9 @@
+## 1.2.3 (2023/08/22)
+
+### Features
+
+1. **Feat**: Support extract and compute math expression from text
+
 ## 1.2.2 (2023/08/21)
 
 ### Features
