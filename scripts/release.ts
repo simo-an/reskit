@@ -10,7 +10,13 @@ import { readFileSync, writeFileSync } from "fs";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const projects = ["packages/room", "packages/location", "packages/shared", "packages/number"];
+const projects = [
+  "packages/room",
+  "packages/location",
+  "packages/shared",
+  "packages/number",
+  "packages/math-expression",
+];
 const packages = projects.map((project) => `${project}/package.json`);
 
 packages.push("package.json");

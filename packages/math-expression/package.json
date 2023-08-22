@@ -1,6 +1,6 @@
 {
   "name": "@reskit/math-expression",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A kit to extract math-expression",
   "main": "dist/reskit-math-expression.js",
   "module": "dist/reskit-math-expression.esm.mjs",
