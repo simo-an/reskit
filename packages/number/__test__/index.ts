@@ -1,3 +1,4 @@
+import chalk from "chalk";
 import {
   extractNumber,
   updateLocalized,
@@ -9,14 +10,6 @@ import {
 } from "../index";
 import { zhLocalize, zhAlgorithm, createZhRegexp } from "../index";
 
-updateLocalized(
-  {
-    ...zhLocalize,
-    regexp: createZhRegexp(),
-  },
-  zhAlgorithm
-);
-
 let passed = false;
 let caseNumber = 0;
 let result: any;
@@ -27,19 +20,37 @@ function judge(exit?: boolean) {
   passed = result.toString() === answer.toString();
 
   if (!passed) {
-    console.error(`Failed: ${caseNumber}`, "result: ", result, "answer: ", answer);
+    console.info(chalk.red(`Failed: ${caseNumber}`, "result: ", result, "answer: ", answer));
   } else {
-    console.info(`Succeed: ${caseNumber}`, "result: ", result, "answer: ", answer);
+    console.info(chalk.green(`Succeed: ${caseNumber}`, "result: ", result, "answer: ", answer));
   }
   exit && process.exit(0);
 }
+
+result = extractNumber("一The numbers are: 1. 3030.222 and 899.90");
+answer = [1, 3030.222, 899.9];
+
+judge();
+
+updateLocalized(
+  {
+    ...zhLocalize,
+    regexp: createZhRegexp(),
+  },
+  zhAlgorithm
+);
+
+result = extractNumber("一The numbers are: 1. 3030.222 and 899.90", false);
+answer = ["一", "1", "3030.222", "899.90"];
+
+judge();
 
 result = extractNumber(
   "我想明天中午十二点和三个人走1千多米，花费十七点五万元以内，有百分之四十的概率温度在二十三摄氏度"
 );
 answer = [12, 3, 1000, 175000, 0.4, 23];
 
-judge(true);
+judge();
 
 result = extractNumber("答案是负的一又十分之四");
 answer = [-1.4];

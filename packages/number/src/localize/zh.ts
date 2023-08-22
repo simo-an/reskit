@@ -79,7 +79,7 @@ function createZhRegexp() {
     localDecimalRegexp = createRegexp(`{int}${decimalFlag}{decimal}{unit}`, "g", {
       int: `(${numberLikeList.join("|")})+`,
       decimal: `(${localNumberList.join("|")})+`,
-      unit: `(${unitList.join("|")})?`,
+      unit: `(${unitList.join("|")})?(${localNumberList.join("|")})*`,
     });
 
     localFractionRegexp = createRegexp(
@@ -271,7 +271,7 @@ function convertMixedNumber(text: string): string {
   let result = text.split("");
 
   for (let i = 0; i < result.length; i++) {
-    const n = Number(result[i]);
+    const n = parseInt(result[i]);
 
     if (Number.isInteger(n)) {
       result[i] = toLocalMap[n];
@@ -281,9 +281,15 @@ function convertMixedNumber(text: string): string {
       result[i] === "." &&
       i !== 0 &&
       1 !== result.length - 1 &&
-      mixedNumberRegexp.test(result[i - 1] + result[i + 1])
+      mixedNumberRegexp.test(result[i - 1])
     ) {
-      result[i] = decimalFlag;
+      mixedNumberRegexp.lastIndex = 0;
+
+      if (mixedNumberRegexp.test(result[i + 1]) || Number.isInteger(parseInt(result[i + 1]))) {
+        result[i] = decimalFlag;
+      }
+
+      mixedNumberRegexp.lastIndex = 0;
     }
   }
 

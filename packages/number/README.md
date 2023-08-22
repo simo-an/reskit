@@ -6,11 +6,25 @@ Install `@reskit/number` by `pnpm`
 pnpm add @reskit/number
 ```
 
-## Preparation
+## Setup
 
-Before use `@reskit/number` to extract number, you should set localized data.
+```ts
+import { extractNumber } from "@reskit/number";
 
-> At version 1.2.0 , we only support chinese
+const result = extractNumber("The numbers are: 1. 3030.222 and 899.90");
+```
+
+The kit will extract number from text, console will output
+
+```bash
+[1, 3030.222, 899.9]
+```
+
+## Localized
+
+Before use `@reskit/number` to extract localized number, you should set localized data.
+
+> At version 1.2.4 , we only have build in chinese data
 
 ```typescript
 import { extractNumber, updateLocalized, replaceNumber } from "@reskit/number";
@@ -24,8 +38,6 @@ updateLocalized(
   zhAlgorithm
 );
 ```
-
-## Run Test Demo
 
 After prepared, run a test demo
 
