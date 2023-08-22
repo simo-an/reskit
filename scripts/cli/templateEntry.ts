@@ -1,7 +1,7 @@
-import { capitalize } from "./utils";
+import { camelize } from "./utils";
 
 function createEntry(subModule: string) {
-  const funcName = `extract${capitalize(subModule)}`;
+  const funcName = camelize(`extract-${subModule}`);
   const template = `
 function ${funcName}(): string {
   console.warn("${funcName}");
@@ -15,7 +15,7 @@ export { ${funcName} }
 }
 
 function createTestDemo(subModule: string) {
-  const funcName = `extract${capitalize(subModule)}`;
+  const funcName = camelize(`extract-${subModule}`);
   const template = `
 import { ${funcName} } from "../index";
 

@@ -19,8 +19,8 @@ updateLocalized(
 
 let passed = false;
 let caseNumber = 0;
-let result;
-let answer;
+let result: any;
+let answer: any;
 
 function judge(exit?: boolean) {
   caseNumber += 1;
@@ -38,8 +38,6 @@ result = extractNumber(
   "我想明天中午十二点和三个人走1千多米，花费十七点五万元以内，有百分之四十的概率温度在二十三摄氏度"
 );
 answer = [12, 3, 1000, 175000, 0.4, 23];
-
-console.warn(result.toString(), answer.toString());
 
 judge(true);
 

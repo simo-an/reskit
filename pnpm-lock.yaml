@@ -81,6 +81,12 @@ importers:
         specifier: workspace:*
         version: link:../shared
 
+  packages/math-expression:
+    dependencies:
+      '@reskit/shared':
+        specifier: workspace:*
+        version: link:../shared
+
   packages/number:
     dependencies:
       '@reskit/shared':
@@ -96,6 +102,9 @@ importers:
       '@reskit/location':
         specifier: workspace:*
         version: link:../../packages/location
+      '@reskit/math-expression':
+        specifier: workspace:*
+        version: link:../../packages/math-expression
       '@reskit/number':
         specifier: workspace:*
         version: link:../../packages/number
