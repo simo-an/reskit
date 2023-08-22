@@ -1,14 +1,15 @@
 {
   "name": "reskit",
-  "version": "1.2.2",
-  "description": "A kit of information extraction",
+  "version": "1.2.3",
+  "description": "A kit to extract information",
   "type": "module",
   "scripts": {
     "dev": "tsx ./scripts/dev.ts",
     "build": "pnpm -F=./packages/* run build",
     "build-dev": "pnpm -F=./packages/* run build-dev",
-    "test": "pnpm -F=./packages/* run test",
     "release": "tsx ./scripts/release.ts",
+    "new": "tsx ./scripts/new.ts",
+    "test": "pnpm -F=./packages/* run test",
     "format": "pnpm -F=./packages/* run format",
     "precommit": "pnpm -F=./packages/* run precommit",
     "preinstall": "only-allow pnpm",
@@ -24,9 +25,11 @@
     "pnpm": ">=8.0.0"
   },
   "keywords": [
+    "extract information",
+    "extract number",
+    "extract date",
+    "extract location",
     "reskit",
-    "tools",
-    "room",
     "extraction"
   ],
   "author": "simu",
@@ -42,6 +45,7 @@
     "@rollup/plugin-typescript": "^11.1.2",
     "@types/inquirer": "^9.0.3",
     "@types/node": "^18.16.0",
+    "chalk": "^5.3.0",
     "cross-env": "^7.0.3",
     "esbuild": "^0.19.2",
     "husky": "^8.0.3",

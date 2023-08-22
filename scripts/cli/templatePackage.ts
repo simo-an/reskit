@@ -1,9 +1,11 @@
+function createPackage(subModule: string) {
+  const template = `
 {
-  "name": "@reskit/number",
-  "version": "1.2.3",
-  "description": "A kit to extract number",
-  "main": "dist/reskit-number.js",
-  "module": "dist/reskit-number.esm.mjs",
+  "name": "@reskit/${subModule}",
+  "version": "1.2.2",
+  "description": "A kit of ${subModule} extraction",
+  "main": "dist/reskit-${subModule}.js",
+  "module": "dist/reskit-${subModule}.esm.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -17,30 +19,32 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "(src|test)/**/*.ts": [
+    "(src|__test__)/**/*.ts": [
       "prettier --write"
     ]
   },
   "author": "simu",
   "keywords": [
-    "extract number",
     "reskit",
-    "number",
+    "${subModule}",
     "extract",
-    "extraction",
-    "number extract"
+    "extraction"
   ],
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/simo-an/reskit.git"
   },
-  "homepage": "https://github.com/simo-an/reskit/tree/main/packages/number",
+  "homepage": "https://github.com/simo-an/reskit/tree/main/packages/${subModule}",
   "bugs": {
     "url": "https://github.com/simo-an/reskit/issues"
   },
-  "dependencies": {
-    "@reskit/shared": "workspace:*"
-  },
+  "dependencies": {},
   "devDependencies": {}
 }
+  `;
+
+  return template.trim();
+}
+
+export { createPackage };
