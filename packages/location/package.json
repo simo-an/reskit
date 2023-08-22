@@ -1,6 +1,6 @@
 {
   "name": "@reskit/location",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "A kit to extract location",
   "main": "dist/reskit-location.js",
   "module": "dist/reskit-location.esm.mjs",

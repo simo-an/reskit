@@ -1,3 +1,9 @@
+## 1.2.4 (2023/08/23)
+
+### Features
+
+1. **extract-number**: Feat support extract plain number when not localized
+
 ## 1.2.3 (2023/08/22)
 
 ### Features

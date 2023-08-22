@@ -1,6 +1,6 @@
 {
   "name": "reskit",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "A kit to extract information",
   "type": "module",
   "scripts": {
