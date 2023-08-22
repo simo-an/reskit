@@ -91,6 +91,9 @@ function replaceMixed(text: string) {
 }
 
 function toFullNumber(text: string) {
+  if (!algorithm || !algorithm.toNumber) {
+    return text;
+  }
   const intList = text.match(regexp.localNumberRegexp) || [];
   const unitList = Object.keys(data.unit);
 
@@ -106,6 +109,10 @@ function toFullNumber(text: string) {
 }
 
 function toFullLocalized(text: string): string {
+  if (!algorithm || !algorithm.toLocalized) {
+    return text;
+  }
+
   let result = text;
 
   result = algorithm.toLocalized(text);

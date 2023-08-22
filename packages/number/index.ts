@@ -17,14 +17,14 @@ function replaceNumber(text: string): string {
 /**
  * extract number from text
  * @param text raw text
- * @param keepRaw whether convert localize number to Arabic numerals
+ * @param convert whether convert Arabic numerals to localize number
  */
 function extractNumber(text: string, convert?: boolean): Array<number>;
 function extractNumber(text: string, convert: boolean = true): Array<number | string> {
   const textResult = replaceNumber(text);
   const numResult = useNumberRegexp(textResult);
 
-  if (convert || numResult.length === 0) {
+  if (convert || numResult.length === 0 || text === textResult) {
     return numResult;
   }
 
@@ -34,7 +34,7 @@ function extractNumber(text: string, convert: boolean = true): Array<number | st
     .filter((item) => !!item)
     .sort((a, b) => b.length - a.length);
 
-  return text.split(createOrRegexp(existTextList)).filter((text) => !!text);
+  return text.split(createOrRegexp(existTextList)).filter((text) => !!text.trim());
 }
 
 export { extractNumber, replaceNumber };
