@@ -1,3 +1,4 @@
+import chalk from "chalk";
 import { extractMathExpression, computeMathExpression } from "../index";
 
 let passed = false;
@@ -10,9 +11,9 @@ function judge(exit?: boolean) {
   passed = result.toString() === answer.toString();
 
   if (!passed) {
-    console.error(`Failed: ${caseNumber}`, "result: ", result, "answer: ", answer);
+    console.info(chalk.red(`Failed: ${caseNumber}`, "result: ", result, "answer: ", answer));
   } else {
-    console.info(`Succeed: ${caseNumber}`, "result: ", result, "answer: ", answer);
+    console.info(chalk.green(`Succeed: ${caseNumber}`, "result: ", result, "answer: ", answer));
   }
   exit && process.exit(0);
 }

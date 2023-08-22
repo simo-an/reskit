@@ -1,7 +1,7 @@
-import { capitalize } from "./utils";
+import { camelize } from "./utils";
 
 function createRollupConfig(subModule: string) {
-  const umdEntry = `Kit${capitalize(subModule)}`;
+  const umdEntry = camelize(`Kit-${subModule}`);
 
   const template = `
 import { execSync } from "child_process";
