@@ -12,7 +12,8 @@
   "dependencies": {
     "@reskit/room": "workspace:*",
     "@reskit/number": "workspace:*",
-    "@reskit/location": "workspace:*"
+    "@reskit/location": "workspace:*",
+    "@reskit/math-expression": "workspace:*"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.4.2",

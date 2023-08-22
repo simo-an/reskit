@@ -1,5 +1,9 @@
-const workspace = process.argv[2];
-const subModule = process.argv[3];
+let workspace = process.argv[2];
+let subModule = process.argv[3];
+
+if (!subModule && workspace.includes("/")) {
+  [workspace, subModule] = workspace.split("/");
+}
 
 console.warn(`workspace is: ${workspace}`);
 console.warn(`subModule is: ${subModule}`);
@@ -53,4 +57,7 @@ Object.entries(projectFiles).forEach(([file, content]) => {
 });
 
 console.info("done! please run: ");
+console.info("--------------------");
 console.info("pnpm i");
+console.info(`pnpm -F=./${workspace}/${subModule} run build`);
+console.info("--------------------");

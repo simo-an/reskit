@@ -38,6 +38,9 @@ importers:
       '@types/node':
         specifier: ^18.16.0
         version: 18.16.0
+      chalk:
+        specifier: ^5.3.0
+        version: 5.3.0
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -81,6 +84,12 @@ importers:
         specifier: workspace:*
         version: link:../shared
 
+  packages/math-expression:
+    dependencies:
+      '@reskit/shared':
+        specifier: workspace:*
+        version: link:../shared
+
   packages/number:
     dependencies:
       '@reskit/shared':
@@ -96,6 +105,9 @@ importers:
       '@reskit/location':
         specifier: workspace:*
         version: link:../../packages/location
+      '@reskit/math-expression':
+        specifier: workspace:*
+        version: link:../../packages/math-expression
       '@reskit/number':
         specifier: workspace:*
         version: link:../../packages/number
