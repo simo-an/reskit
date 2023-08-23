@@ -16,6 +16,9 @@ const projects = [
   "packages/shared",
   "packages/number",
   "packages/math-expression",
+  "packages/link",
+  "packages/emoji",
+  "packages/color",
 ];
 const packages = projects.map((project) => `${project}/package.json`);
 
@@ -59,7 +62,7 @@ async function pushToRepository(version: string) {
   if (push) {
     execSync(`git commit -m "chore: upgrade version to ${version}"`);
     execSync(`git tag v${version}`);
-    execSync("git push origin");
+    execSync("git push origin && git push origin --tags");
   }
 }
 

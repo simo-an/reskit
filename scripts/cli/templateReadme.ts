@@ -8,9 +8,25 @@ Install \`@reskit/${subModule}\` by \`pnpm\`
 pnpm add @reskit/${subModule}
 \`\`\`
 
+## Usage
+
+\`\`\`ts
+import {  } from "@reskit/${subModule}";
+
+\`\`\`
+
+## Functions
+
+### Func1
+
+\`\`\`ts
+import {  } from "@reskit/${subModule}";
+
+\`\`\`
+
 ## Others
 
-Welcome to create PR and make @reskit/${subModule} better!
+Welcome to contribute and make @reskit/${subModule} better!
 `;
 
   return template.trim();

@@ -1,3 +1,13 @@
+## 1.3.0
+
+### Features
+
+1. **Feat**: Support extract link from text
+2. **Feat**: Support extract emoji from text
+3. **Feat**: Support extract color from text
+
+### Features
+
 ## 1.2.4 (2023/08/23)
 
 ### Features

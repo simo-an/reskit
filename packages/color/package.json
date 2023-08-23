@@ -1,9 +1,9 @@
 {
-  "name": "@reskit/math-expression",
+  "name": "@reskit/color",
   "version": "1.3.0",
-  "description": "A kit to extract math-expression",
-  "main": "dist/reskit-math-expression.js",
-  "module": "dist/reskit-math-expression.esm.mjs",
+  "description": "A kit of color extraction",
+  "main": "dist/reskit-color.js",
+  "module": "dist/reskit-color.esm.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -23,24 +23,20 @@
   },
   "author": "simu",
   "keywords": [
+    "extract color",
+    "color",
     "reskit",
-    "math",
-    "math-expression",
-    "calculation",
-    "extract",
-    "extraction"
+    "extract"
   ],
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/simo-an/reskit.git"
   },
-  "homepage": "https://github.com/simo-an/reskit/tree/main/packages/math-expression",
+  "homepage": "https://github.com/simo-an/reskit/tree/main/packages/color",
   "bugs": {
     "url": "https://github.com/simo-an/reskit/issues"
   },
-  "dependencies": {
-    "@reskit/shared": "workspace:*"
-  },
+  "dependencies": {},
   "devDependencies": {}
 }

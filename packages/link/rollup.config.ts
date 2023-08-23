@@ -1,20 +1,15 @@
-import { camelize } from "./utils";
-
-function createRollupConfig(subModule: string) {
-  const umdEntry = camelize(`Kit-${subModule}`);
-
-  const template = `
 import { execSync } from "child_process";
 import replace from "@rollup/plugin-replace";
 import typescript from "@rollup/plugin-typescript";
 import terser from "@rollup/plugin-terser";
+import json from "@rollup/plugin-json";
 import process from "process";
 import { defineConfig } from "rollup";
 import pkg from "./package.json" assert { type: "json" };
 
 const command = 'git describe --always --tags --long --match "v*" --dirty';
 const GIT_VERSION = execSync(command).toString().trim();
-const BUILD_INFO = \`\${GIT_VERSION}(\${new Date().toLocaleString()})\`;
+const BUILD_INFO = `${GIT_VERSION}(${new Date().toLocaleString()})`;
 
 const isDev = process.env.BUILD === "development";
 
@@ -23,16 +18,16 @@ const config = defineConfig({
   output: [
     {
       file: pkg.main,
-      name: "${umdEntry}",
+      name: "KitLink",
       format: "umd",
       sourcemap: false,
-      banner: \`/** reskit-${subModule}-\${BUILD_INFO} **/\`,
+      banner: `/** reskit-link-${BUILD_INFO} **/`,
     },
     {
       file: pkg.module,
       format: "esm",
       sourcemap: false,
-      banner: \`/** reskit-${subModule}-\${BUILD_INFO} **/\`,
+      banner: `/** reskit-link-${BUILD_INFO} **/`,
     },
   ],
   external: [
@@ -47,6 +42,7 @@ const config = defineConfig({
       __BUILD_INFO__: BUILD_INFO,
       __DEV__: String(isDev),
     }),
+    json(),
     typescript({
       tsconfig: "tsconfig.json",
     }),
@@ -55,9 +51,3 @@ const config = defineConfig({
 });
 
 export default config;
-`;
-
-  return template.trim();
-}
-
-export { createRollupConfig };
