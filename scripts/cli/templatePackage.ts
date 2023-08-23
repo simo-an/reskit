@@ -3,7 +3,7 @@ function createPackage(subModule: string) {
 {
   "name": "@reskit/${subModule}",
   "version": "1.2.2",
-  "description": "A kit of ${subModule} extraction",
+  "description": "A kit to extract ${subModule}",
   "main": "dist/reskit-${subModule}.js",
   "module": "dist/reskit-${subModule}.esm.mjs",
   "types": "dist/index.d.ts",

@@ -16,6 +16,9 @@ const projects = [
   "packages/shared",
   "packages/number",
   "packages/math-expression",
+  "packages/link",
+  "packages/emoji",
+  "packages/color",
 ];
 const packages = projects.map((project) => `${project}/package.json`);
 
