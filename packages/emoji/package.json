@@ -1,11 +1,9 @@
-function createPackage(subModule: string) {
-  const template = `
 {
-  "name": "@reskit/${subModule}",
+  "name": "@reskit/emoji",
   "version": "1.2.2",
-  "description": "A kit of ${subModule} extraction",
-  "main": "dist/reskit-${subModule}.js",
-  "module": "dist/reskit-${subModule}.esm.mjs",
+  "description": "A kit of emoji extraction",
+  "main": "dist/reskit-emoji.js",
+  "module": "dist/reskit-emoji.esm.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
@@ -25,8 +23,8 @@ function createPackage(subModule: string) {
   },
   "author": "simu",
   "keywords": [
-    "extract ${subModule}",
-    "${subModule}",
+    "extract emoji",
+    "emoji",
     "reskit",
     "extract"
   ],
@@ -35,16 +33,10 @@ function createPackage(subModule: string) {
     "type": "git",
     "url": "git+https://github.com/simo-an/reskit.git"
   },
-  "homepage": "https://github.com/simo-an/reskit/tree/main/packages/${subModule}",
+  "homepage": "https://github.com/simo-an/reskit/tree/main/packages/emoji",
   "bugs": {
     "url": "https://github.com/simo-an/reskit/issues"
   },
   "dependencies": {},
   "devDependencies": {}
 }
-  `;
-
-  return template.trim();
-}
-
-export { createPackage };
