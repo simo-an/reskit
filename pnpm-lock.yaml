@@ -78,6 +78,8 @@ importers:
         specifier: ^2.3.1
         version: 2.3.1
 
+  packages/color: {}
+
   packages/emoji: {}
 
   packages/link: {}
