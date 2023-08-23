@@ -1,6 +1,6 @@
 type RepeatMode = "?" | "+" | "*";
 
-function filterReserved(text: string | number) {
+function escapeRegExp(text: string | number) {
   return text.toString().replace(/[-[\]{}()*+!<=:?.\/\\^$|#\s,]/g, "\\$&");
 }
 
@@ -24,7 +24,7 @@ function createOrRegexp(
   flag?: string,
   format?: Record<string, string>
 ): RegExp {
-  let regexpText = textList.map(filterReserved).join("|");
+  let regexpText = textList.map(escapeRegExp).join("|");
 
   if (repeat) {
     regexpText = `(${regexpText})${repeat}`;
@@ -38,7 +38,7 @@ function createExistRegexp(
   repeat?: RepeatMode,
   flag?: string
 ): RegExp {
-  let regexpText = `${textList.map(filterReserved).join("?")}?`;
+  let regexpText = `${textList.map(escapeRegExp).join("?")}?`;
 
   if (repeat) {
     regexpText = `(${regexpText})${repeat}`;
@@ -67,5 +67,9 @@ function useNumberRegexp(text: string): Array<number> {
 
   return result.map((result) => parseFloat(result));
 }
+
+const newline = /^(?: *(?:\n|$))+/;
+const email =
+  /[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+(@)[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+(?![-_])/;
 
 export { createRegexp, createOrRegexp, createExistRegexp, useNumberRegexp, useTaggedRegexp };
