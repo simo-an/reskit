@@ -15,6 +15,8 @@ if (!subModule) {
   throw new Error("please provide subModule!");
 }
 
+import pkg from "../package.json" assert { type: "json" };
+
 import { mkdirSync, writeFileSync, existsSync } from "fs";
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
@@ -37,7 +39,7 @@ mkdirSync(baseDir, { recursive: true });
 
 const projectDirs = ["__test__", "scripts", "src"];
 const projectFiles = {
-  "package.json": createPackage(subModule),
+  "package.json": createPackage(subModule, pkg.version),
   "README.md": createReadme(subModule),
   "tsconfig.json": createTsConfig(subModule),
   "rollup.config.ts": createRollupConfig(subModule),

@@ -36,7 +36,7 @@ Output
 ["http://www.google.com:80/s?wd=vue#page", "mailto://www.baidu.com/s"];
 ```
 
-### Extract Link From Tag <a>
+### Extract Link From a Tag
 
 ```ts
 extractLink("the link is: <a target='_blank' href='http://www.baidu.com/'>Baidu</a>");

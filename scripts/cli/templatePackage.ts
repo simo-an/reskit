@@ -1,8 +1,8 @@
-function createPackage(subModule: string) {
+function createPackage(subModule: string, version: string) {
   const template = `
 {
   "name": "@reskit/${subModule}",
-  "version": "1.2.2",
+  "version": "${version}",
   "description": "A kit to extract ${subModule}",
   "main": "dist/reskit-${subModule}.js",
   "module": "dist/reskit-${subModule}.esm.mjs",

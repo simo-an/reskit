@@ -34,7 +34,7 @@ updateLocations([
 ```
 
 ```typescript
-import { extractLocation, updateBuildings } from "@reskit/location";
+import { extractLocation, updateLocations } from "@reskit/location";
 
 console.warn(extractLocation("Let's have a meeting at Gusu tomorrow"));
 console.warn(extractLocation("Let's have a meeting at Martis tomorrow"));
