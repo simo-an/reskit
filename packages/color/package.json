@@ -37,6 +37,8 @@
   "bugs": {
     "url": "https://github.com/simo-an/reskit/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@reskit/shared": "workspace:*"
+  },
   "devDependencies": {}
 }
