@@ -2,6 +2,7 @@ import { execSync } from "child_process";
 import replace from "@rollup/plugin-replace";
 import typescript from "@rollup/plugin-typescript";
 import terser from "@rollup/plugin-terser";
+import { wasm } from "@rollup/plugin-wasm";
 import process from "process";
 import { defineConfig } from "rollup";
 import pkg from "./package.json" assert { type: "json" };
@@ -44,6 +45,7 @@ const config = defineConfig({
     typescript({
       tsconfig: "tsconfig.json",
     }),
+    wasm(),
     !isDev && terser(),
   ],
 });

@@ -3,3 +3,6 @@ temp/
 build/
 pnpm-lock.yaml
 pnpm-workspace.yaml
+
+crates/**/*
+target/**/*

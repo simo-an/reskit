@@ -1,12 +1,8 @@
 import { Color } from "./color";
 
 class ColorGroup {
-  public main!: Color;
-  public colors: Color[] = [];
-
-  public get size() {
-    return this.colors.length;
-  }
+  public main: Color = new Color(0, 0, 0, 0);
+  public num: number = 0;
 
   public setMainColor(color: Color) {
     this.main = color;
@@ -17,10 +13,11 @@ class ColorGroup {
   }
 
   public addColor(color: Color) {
-    this.colors.push(color);
     this.main.r = Math.floor((this.main.r + color.r) / 2);
     this.main.g = Math.floor((this.main.g + color.g) / 2);
     this.main.b = Math.floor((this.main.b + color.b) / 2);
+
+    this.num += 1;
   }
 }
 

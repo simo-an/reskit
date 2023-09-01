@@ -27,8 +27,6 @@ function getImageInUint8Array(url: string, scaleDown?: boolean): Promise<Uint8Ar
     if (!canvas) {
       canvas = document.createElement("canvas");
       context = canvas.getContext("2d");
-
-      document.body.appendChild(canvas);
     }
     if (!context) {
       throw new Error("Cannot get context");
@@ -61,8 +59,7 @@ function getImageInUint8Array(url: string, scaleDown?: boolean): Promise<Uint8Ar
   return defer.promise;
 }
 
-async function extractColorFromImage(url: string, maxNum: number): Promise<Color[]> {
-  const imageData = await getImageInUint8Array(url, true);
+async function extractColorFromImage(imageData: Uint8Array, maxNum: number): Promise<Color[]> {
   const colors: Color[] = [];
 
   for (let i = 0; i < imageData.length; i += 4) {
@@ -93,7 +90,7 @@ async function extractColorFromImage(url: string, maxNum: number): Promise<Color
     minGroup.addColor(color);
   });
 
-  return colorGroups.sort((c1, c2) => c2.size - c1.size).map((colorGroup) => colorGroup.main);
+  return colorGroups.sort((c1, c2) => c2.num - c1.num).map((colorGroup) => colorGroup.main);
 }
 
 export { getImageInUint8Array, extractColorFromImage };

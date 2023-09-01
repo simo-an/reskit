@@ -40,5 +40,8 @@
   "dependencies": {
     "@reskit/shared": "workspace:*"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@rskit/k-means": "workspace:*",
+    "@rollup/plugin-wasm": "^6.1.3"
+  }
 }
