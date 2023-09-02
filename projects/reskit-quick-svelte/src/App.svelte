@@ -2,11 +2,12 @@
   // import ExtractRoom from "./ExtractRoom.svelte";
   // import ExtractLocation from "./ExtractLocation.svelte";
   // import ExtractNumber from "./ExtractNumber.svelte";
-  import ExtractMathExpression from "./ExtractMathExpression.svelte";
+  // import ExtractMathExpression from "./ExtractMathExpression.svelte";
+  import ExtractImageColor from "./ExtractImageColor.svelte";
 </script>
 
 <main>
-  <ExtractMathExpression />
+  <ExtractImageColor />
 </main>
 
 <style>

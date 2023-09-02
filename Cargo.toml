@@ -1,0 +1,19 @@
+[workspace]
+members = ["crates/*"]
+resolver = "2"         # See https://doc.rust-lang.org/cargo/reference/resolver.html#feature-resolver-version-2
+
+[workspace.dependencies]
+json = { version = "0.12.4" }
+paste = { version = "1.0" }
+regex = { version = "1.9.1" }
+
+[profile.dev]
+debug = 2
+incremental = true
+
+[profile.release]
+codegen-units = 1
+debug = false
+lto = false       # disabled by now, because it will significantly increase our compile time.
+opt-level = 3
+strip = true

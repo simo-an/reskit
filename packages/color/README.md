@@ -9,14 +9,23 @@ pnpm add @reskit/color
 ## Usage
 
 ```ts
-import { extractColor } from "@reskit/color";
+import { extractImageColor, extractImageColorInRust } from "@reskit/color";
 
-extractColor("Color is #333");
+const imageLink = "https://avatars.githubusercontent.com/u/38021707?v=4";
+
+extractImageColorInRust(imageLink, 5);
+extractImageColor(imageLink, 5);
 ```
 
-will extract: `["#333"]`
+We will extract the top five color at this image.
+
+Sample codes are at [ExtractImageColor](https://github.com/simo-an/reskit/blob/main/projects/reskit-quick-svelte/src/ExtractImageColor.svelte)
+
+> We support extract color at rust code which has higher performance.
 
 ## Functions
+
+Extract color at text.
 
 ### Extract Hex
 

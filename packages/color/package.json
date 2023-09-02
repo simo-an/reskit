@@ -37,6 +37,11 @@
   "bugs": {
     "url": "https://github.com/simo-an/reskit/issues"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "@reskit/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@rskit/k-means": "workspace:*",
+    "@rollup/plugin-wasm": "^6.1.3"
+  }
 }
