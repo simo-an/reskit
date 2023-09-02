@@ -1,5 +1,3 @@
-declare let navigator: any;
-
 const CONTROL_CODES = "\\u0000-\\u0020\\u007f-\\u009f";
 const WEB_LINK_REGEXP = new RegExp(
   "(?:[a-zA-Z][a-zA-Z0-9+.-]{2,}:\\/\\/|data:|www\\.)[^{\\s'\"}" +

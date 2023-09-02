@@ -9,5 +9,5 @@ A kit of information extraction
 5. Extract Link: [@reskit/link](https://github.com/simo-an/reskit/tree/main/packages/link)
 6. Extract Emoji: [@reskit/emoji](https://github.com/simo-an/reskit/tree/main/packages/emoji)
 7. Extract Color: [@reskit/color](https://github.com/simo-an/reskit/tree/main/packages/color)
-8. Extract Date: In Progress
-9. Extract Address: In Progress
+8. Extract Date: [@reskit/date](https://github.com/simo-an/reskit/tree/main/packages/date)
+9. Extract Voice: In Progress

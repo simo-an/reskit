@@ -24,7 +24,7 @@ The kit will extract number from text, console will output
 
 Before use `@reskit/number` to extract localized number, you should set localized data.
 
-> At version 1.2.4 , we only have build in chinese data
+> At current version , we only have build in chinese data
 
 ```typescript
 import { extractNumber, updateLocalized, replaceNumber } from "@reskit/number";

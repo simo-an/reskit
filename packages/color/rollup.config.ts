@@ -1,7 +1,9 @@
 import { execSync } from "child_process";
+import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
 import typescript from "@rollup/plugin-typescript";
 import terser from "@rollup/plugin-terser";
+import { wasm } from "@rollup/plugin-wasm";
 import process from "process";
 import { defineConfig } from "rollup";
 import pkg from "./package.json" assert { type: "json" };
@@ -41,9 +43,15 @@ const config = defineConfig({
       __BUILD_INFO__: BUILD_INFO,
       __DEV__: String(isDev),
     }),
+    resolve({
+      extensions: [".js", ".ts"],
+      mainFields: ["browser", "jsnext:main", "module", "main"],
+      preferBuiltins: true,
+    }),
     typescript({
       tsconfig: "tsconfig.json",
     }),
+    wasm(),
     !isDev && terser(),
   ],
 });
