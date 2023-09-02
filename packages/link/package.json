@@ -1,6 +1,6 @@
 {
   "name": "@reskit/link",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "A kit to extract link",
   "main": "dist/reskit-link.js",
   "module": "dist/reskit-link.esm.mjs",
