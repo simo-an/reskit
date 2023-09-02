@@ -22,9 +22,10 @@ function createOrRegexp(
   textList: Array<string | number>,
   repeat?: RepeatMode,
   flag?: string,
-  format?: Record<string, string>
+  format?: Record<string, string>,
+  escape: boolean = true
 ): RegExp {
-  let regexpText = textList.map(escapeRegExp).join("|");
+  let regexpText = (escape ? textList.map(escapeRegExp) : textList).join("|");
 
   if (repeat) {
     regexpText = `(${regexpText})${repeat}`;
