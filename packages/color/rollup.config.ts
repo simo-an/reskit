@@ -1,4 +1,5 @@
 import { execSync } from "child_process";
+import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
 import typescript from "@rollup/plugin-typescript";
 import terser from "@rollup/plugin-terser";
@@ -41,6 +42,11 @@ const config = defineConfig({
       __VERSION__: pkg.version,
       __BUILD_INFO__: BUILD_INFO,
       __DEV__: String(isDev),
+    }),
+    resolve({
+      extensions: [".js", ".ts"],
+      mainFields: ["browser", "jsnext:main", "module", "main"],
+      preferBuiltins: true,
     }),
     typescript({
       tsconfig: "tsconfig.json",
