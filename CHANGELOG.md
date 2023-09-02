@@ -1,3 +1,10 @@
+## 1.3.1
+
+### Features
+
+1. **Feat**: Support extract color in image
+2. **Feat**: Support extract date in Chinese
+
 ## 1.3.0
 
 ### Features

@@ -5,7 +5,7 @@
 ### Features
 
 - [x] Support extract color from image
-- [ ] Support extract date in chinese
+- [x] Support extract date in chinese
 
 ## VERSION 1.3.0
 
