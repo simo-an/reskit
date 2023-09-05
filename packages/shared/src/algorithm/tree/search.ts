@@ -20,5 +20,29 @@ function dfs<N extends TNode>(n: N, onNode?: (n: N, isEnd?: boolean) => void) {
   loop(n);
 }
 
-export { dfs, isLeaf };
+function bfs<N extends TNode>(n: N, onNode?: (n: N, level: number) => void) {
+  let curr: N[] = [n];
+  let next: N[] = [];
+  let level = 0;
+
+  while (true) {
+    let node = curr.shift();
+
+    if (!node) break;
+
+    onNode && onNode(node, level);
+
+    if (!isLeaf(node)) {
+      node.items!.forEach((i) => next.push(i as N));
+    }
+
+    if (curr.length === 0) {
+      curr = next;
+      next = [];
+      level += 1;
+    }
+  }
+}
+
+export { dfs, bfs, isLeaf };
 export type { TNode };
